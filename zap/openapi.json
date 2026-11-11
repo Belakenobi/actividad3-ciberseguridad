@@ -1,0 +1,11 @@
+{
+  "openapi": "3.0.0",
+  "info": { "title": "Act3 API", "version": "1.0.0" },
+  "servers": [{ "url": "http://localhost:3000" }],
+  "paths": {
+    "/api/public": { "get": { "responses": { "200": { "description": "ok" } } } },
+    "/api/login": { "post": { "requestBody": { "content": { "application/json": { "schema": { "type": "object", "properties": { "username": { "type": "string" }, "password": { "type": "string" } } } } } }, "responses": { "200": { "description": "ok" } } } },
+    "/api/admin": { "get": { "responses": { "200": { "description": "ok" }, "401": { "description": "no auth" } } } },
+    "/api/users": { "get": { "responses": { "200": { "description": "ok" }, "401": { "description": "no auth" } } } }
+  }
+}

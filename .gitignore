@@ -1,0 +1,23 @@
+# Dependencias
+node_modules/
+
+# Terraform (el .lock.hcl SÍ se versiona)
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+*.tfvars.json
+
+# Secretos y variables de entorno
+.env
+.env.*
+*.pem
+*.key
+
+# Basura de editor y sistema
+*.log
+*.swp
+.vscode/
+.idea/
+.DS_Store

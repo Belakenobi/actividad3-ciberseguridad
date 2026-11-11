@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal seguro - Administración</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="admin">
+  <header class="nav">
+    <strong>Portal seguro</strong>
+    <nav><a href="/dashboard.html">Usuarios</a> <a href="/admin.html">Administración</a>
+      <span id="who"></span> <button id="logout">Salir</button></nav>
+  </header>
+  <main class="card wide">
+    <h1>Panel de administración</h1>
+    <p>Datos obtenidos de <code>/api/admin</code> (requiere token y rol admin).</p>
+    <pre id="adminData"></pre>
+    <p id="msg" class="error" role="alert"></p>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

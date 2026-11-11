@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal seguro - Iniciar sesión</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="login">
+  <main class="card">
+    <h1>Portal seguro</h1>
+    <p>Inicia sesión para continuar.</p>
+    <form id="loginForm">
+      <label for="username">Usuario</label>
+      <input id="username" name="username" autocomplete="username" required>
+      <label for="password">Contraseña</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required>
+      <button type="submit">Entrar</button>
+    </form>
+    <p id="msg" class="error" role="alert"></p>
+    <p class="links"><a href="/dashboard.html">Panel de usuario</a> · <a href="/admin.html">Panel de administración</a></p>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

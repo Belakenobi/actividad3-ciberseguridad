@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal seguro - Panel de usuario</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="dashboard">
+  <header class="nav">
+    <strong>Portal seguro</strong>
+    <nav><a href="/dashboard.html">Usuarios</a> <a href="/admin.html">Administración</a>
+      <span id="who"></span> <button id="logout">Salir</button></nav>
+  </header>
+  <main class="card wide">
+    <h1>Panel de usuario</h1>
+    <p>Datos obtenidos de <code>/api/users</code> (requiere token válido).</p>
+    <table id="usersTable"><thead><tr><th>ID</th><th>Usuario</th><th>Rol</th></tr></thead><tbody></tbody></table>
+    <p id="msg" class="error" role="alert"></p>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
