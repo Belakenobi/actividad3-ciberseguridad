@@ -22,10 +22,12 @@ Proyecto académico que integra:
 
 Docker, Terraform, Trivy, AWS CLI, Node.js y una cuenta gratuita de LocalStack.
 
-> **Credenciales:** este repositorio no incluye tokens ni claves.
-> Define tu propio token de LocalStack como variable de entorno
-> (`export LOCALSTACK_AUTH_TOKEN=...`) y nunca lo guardes en archivos.
-> Las claves `test`/`test` de `main.tf` son valores ficticios para LocalStack.
+> **Credenciales y uso:** el repositorio no incluye credenciales reales. Los usuarios
+> y contraseñas de la aplicación son solo de demostración; configura `JWT_SECRET`
+> mediante una variable de entorno y no guardes secretos en archivos. El token de
+> LocalStack también debe proporcionarse mediante `LOCALSTACK_AUTH_TOKEN`. Las
+> claves `test`/`test` de `main.tf` son valores ficticios para LocalStack. Esta
+> aplicación es educativa y no debe usarse en producción.
 
 ## Cómo ejecutarlo
 
@@ -44,8 +46,21 @@ aws --endpoint-url=http://localhost:4566 s3api get-bucket-policy-status --bucket
 ```bash
 cd app
 docker build -t act3-api .
-docker run -d --name act3-api -p 3000:3000 act3-api
+docker run -d --name act3-api -p 3000:3000 -e JWT_SECRET="$(openssl rand -hex 32)" act3-api
 ../scripts/resumen.sh act3-api
+```
+
+### Variable de entorno JWT_SECRET
+
+`JWT_SECRET` es obligatoria; la aplicación termina con error si no está definida
+o está vacía. Genérala al ejecutar la aplicación:
+
+```bash
+# Local (desde app/)
+JWT_SECRET=$(openssl rand -hex 32) node server.js
+
+# Docker
+docker run -e JWT_SECRET="$(openssl rand -hex 32)" -p 3000:3000 act3-api
 ```
 
 ### 3. Sitio web
@@ -72,16 +87,8 @@ docker run --rm --network host -u root -v $(pwd):/zap/wrk:rw ghcr.io/zaproxy/zap
 - JWT: 401 sin token o con token falso, 403 con rol insuficiente, 200 con rol correcto.
 - ZAP: 0 alertas High en la API y en el sitio.
 
-## Nota sobre el secreto JWT
-
-`server.js` usa un valor de ejemplo cuando no se define `JWT_SECRET`. No es una clave real.
-En cualquier uso fuera de esta práctica, define `JWT_SECRET` con un valor aleatorio:
-
-```bash
-docker run -d --name act3-api -p 3000:3000 -e JWT_SECRET="$(openssl rand -hex 32)" act3-api
-```
-
 ## Aviso
 
-Proyecto con fines educativos. Los usuarios y contraseñas del ejemplo son de demostración
-y no deben usarse en producción.
+Proyecto con fines educativos. Los usuarios y contraseñas son solo de demostración,
+`JWT_SECRET` debe configurarse mediante una variable de entorno y la aplicación no
+debe usarse en producción.

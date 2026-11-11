@@ -5,7 +5,11 @@ const app = express();
 app.use(express.json());
 app.use(express.static('public'));
 
-const SECRET = process.env.JWT_SECRET || 'cambia-este-secreto-en-produccion';
+const SECRET = process.env.JWT_SECRET;
+if (!SECRET) {
+  console.error('Error: debe definir la variable de entorno JWT_SECRET.');
+  process.exit(1);
+}
 
 const users = [
   { id: 1, username: 'admin', password: 'admin123', role: 'admin' },
