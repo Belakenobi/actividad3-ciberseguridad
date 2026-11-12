@@ -11,7 +11,7 @@ Proyecto académico que integra:
 
 | Carpeta | Contenido |
 |---|---|
-| `terraform/` | `main.tf` (S3), `iam.tf` (rol y política), `iam-policy.json` |
+| `terraform/` | `script.tf` (S3), `iam.tf` (rol y política), `iam-policy.json` |
 | `app/` | Sitio web (`public/`), API (`server.js`) y Dockerfiles |
 | `zap/` | Definición OpenAPI y reportes de OWASP ZAP (API y sitio) |
 | `evidencias/` | Reportes de Trivy |
@@ -26,7 +26,7 @@ Docker, Terraform, Trivy, AWS CLI, Node.js y una cuenta gratuita de LocalStack.
 > y contraseñas de la aplicación son solo de demostración; configura `JWT_SECRET`
 > mediante una variable de entorno y no guardes secretos en archivos. El token de
 > LocalStack también debe proporcionarse mediante `LOCALSTACK_AUTH_TOKEN`. Las
-> claves `test`/`test` de `main.tf` son valores ficticios para LocalStack. Esta
+> claves `test`/`test` de `script.tf` son valores ficticios para LocalStack. Esta
 > aplicación es educativa y no debe usarse en producción.
 
 ## Cómo ejecutarlo
