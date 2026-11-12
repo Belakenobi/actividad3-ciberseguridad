@@ -34,7 +34,7 @@ Docker, Terraform, Trivy, AWS CLI, Node.js y una cuenta gratuita de LocalStack.
 ### 1. LocalStack e infraestructura
 
 ```bash
-docker run -d --name localstack -p 4566:4566 -e LOCALSTACK_AUTH_TOKEN="$LOCALSTACK_AUTH_TOKEN" localstack/localstack
+docker run -d --name localstack -p 127.0.0.1:4566:4566 -e LOCALSTACK_AUTH_TOKEN="$LOCALSTACK_AUTH_TOKEN" localstack/localstack
 cd terraform
 terraform init
 terraform apply
